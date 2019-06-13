@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+   
+    <package name="packInterceptor" extends="struts-default">
+        <!--INTERCEPTOR-->
+        <interceptors>
+            <interceptor name="miInterceptor" class="tmx.salim.gob.interceptor.MiInterceptor" />
+            <interceptor-stack name="pilaInterceptores">
+                <interceptor-ref name="miInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="pilaInterceptores"/> 
+        <!--GLOBAL RESULTS-->
+        <global-results>
+            <result name="SinPermiso">
+                <param name="location">scss/403.jsp</param>
+                <param name="status">403</param>
+            </result>
+            <result name="error">
+                <param name="location">scss/500.jsp</param>
+                <param name="status">500</param>
+            </result>
+            <result name="NoLogeado">
+                <param name="location">scss/401.jsp</param>
+                <param name="status">401</param>
+            </result>
+        </global-results>
+        
+    </package>
+    <include file="sesionn.xml"/>
+</struts>

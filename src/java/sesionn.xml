@@ -1,0 +1,34 @@
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    
+    <package name="paqueteSesion" extends="struts-default">
+        <action name="iniciarSesion" class="tmx.salif.gob.controller.ActionLogin" method="iniciarSesion">
+            <result name="loginLicencias" type="redirectAction">licencias</result>
+            <result name="loginProteccionCivil" type="redirectAction">proteccionCivil</result>
+            <result name="loginAdministrador " type="redirectAction">administrador</result>
+            <result name="loginError">/loginSalma/iniciarSesionSalim.jsp</result>
+        </action>
+        <action name="logout" class="tmx.salif.gob.controller.ActionLogin" method="logout">
+            <result name="success">/loginSalma/iniciarSesionSalim.jsp</result>
+        </action>
+        <action name="index">
+            <result>/Login.jsp</result>
+        </action>
+    </package>
+    
+    <package name="actions-privados" extends="struts-default,packInterceptor">
+        <action name="administrador" class="tmx.salif.gob.controller.ActionLogin" method="administrador">
+            <result name="success">vistas/administrador/administrador.jsp</result> 
+        </action>
+        <action name="proteccionCivil" class="tmx.salif.gob.controller.ActionLogin" method="proteccionCivil">
+            <result name="success">vistas/proteccionCivil/proteccionCivil.jsp</result> 
+        </action>
+        <action name="licencias" class="tmx.salif.gob.controller.ActionLogin" method="licencias">
+            <result name="success">vistas/licencias/licencias.jsp</result> 
+        </action>
+    </package>
+    
+</struts>    
